@@ -76,7 +76,7 @@ class FindTasksQuery implements QueryInterface
         }
 
         if ($limit > self::MAX_LIMIT) {
-            throw new ValidationException('Limit should not be more than 40');
+            throw new ValidationException(sprintf('Limit should not be more than %s', self::MAX_LIMIT));
         }
     }
 
