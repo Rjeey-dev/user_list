@@ -65,7 +65,7 @@
     "repositories":[
         {
             "type": "vcs",
-            "url" : "git@super_secure_repository/service_bus.git"
+            "url" : "git@github.com:Travelix/service_bus.git"
         }
     ]
 }

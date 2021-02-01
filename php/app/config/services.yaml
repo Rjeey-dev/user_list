@@ -8,7 +8,7 @@ parameters:
     env(MONGODB_DB): ''
 
 imports:
-    - { resource: '../src/Todo/Presentation/Resources/config/services.yml' }
+    - { resource: '../src/User/Presentation/Resources/config/services.yml' }
 
 services:
     # default configuration for services in *this* file
@@ -23,14 +23,13 @@ services:
         resource: '../src/*'
         exclude:
             - '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
-            - '../src/Todo/Application/Query'
-            - '../src/Todo/Application/Command'
-            - '../src/Todo/Domain/ValueObject'
-            - '../src/Todo/Domain/DTO'
-            - '../src/Todo/Domain/Event'
-            - '../src/Todo/Domain/Entity'
             - '../src/User/Application/Query'
-            - '../src/Notifications/Application/Query'
+            - '../src/User/Application/Command'
+            - '../src/User/Domain/ValueObject'
+            - '../src/User/Domain/DTO'
+            - '../src/User/Domain/Event'
+            - '../src/User/Domain/Entity'
+
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

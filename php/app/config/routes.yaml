@@ -1,2 +1,2 @@
 todos:
-    resource: '../src/Todo/Presentation/Resources/config/routes/annotations.yaml'
+    resource: '../src/User/Presentation/Resources/config/routes/annotations.yaml'

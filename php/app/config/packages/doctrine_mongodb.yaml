@@ -13,11 +13,11 @@ doctrine_mongodb:
                 todos:
                     is_bundle: false
                     type: annotation
-                    dir: '%kernel.project_dir%/src/Todo/Domain/Entity'
-                    prefix: App\Todo\Domain\Entity
+                    dir: '%kernel.project_dir%/src/User/Domain/Entity'
+                    prefix: App\User\Domain\Entity
                     alias: Notifications
                 todos_vo:
                     type: annotation
-                    dir: "%kernel.project_dir%/src/Todo/Domain/ValueObject"
-                    prefix: App\Todo\Domain\ValueObject
+                    dir: "%kernel.project_dir%/src/User/Domain/ValueObject"
+                    prefix: App\User\Domain\ValueObject
                     is_bundle: false

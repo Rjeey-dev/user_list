@@ -25,6 +25,7 @@ RUN set -xe \
         zip \
     && pecl install -f \
         mongodb \
+        xdebug-2.9.3 \
     && docker-php-ext-enable \
         mongodb \
     && apk add --no-cache --virtual .imagick-runtime-deps \
@@ -37,5 +38,10 @@ ARG TZ=America/New_York
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo "${TZ}" > /etc/timezone \
     && echo "date.timezone=${TZ}" > "${PHP_INI_DIR}/conf.d/date_tz.ini"
+
+RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+   && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+   && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
+   && echo "xdebug.remote_log=/var/log/xdebug.log" >> /usr/local/etc/php/conf.d/xdebug.ini;
 
 WORKDIR /var/www/app
