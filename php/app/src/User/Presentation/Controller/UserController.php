@@ -10,15 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends ApiController
 {
-
     /**
      * @Route("/lists", name="list", methods={"GET"})
      */
   public function lists (Request $request): Response
   {
-      var_dump(22);
-
-
-
+        $number = "FDSFDSF";
+        return new Response($number);
   }
 }
+
