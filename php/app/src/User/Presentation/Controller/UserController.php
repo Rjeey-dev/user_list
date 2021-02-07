@@ -10,15 +10,31 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends ApiController
 {
-
     /**
      * @Route("/lists", name="list", methods={"GET"})
      */
-  public function lists (Request $request): Response
-  {
-      var_dump(22);
+    public function lists(Request $request): Response
+    {
+        $number = "FDSFDSF";
+        return new Response($number);
+    }
+
+    /**
+     * @Route("/create", name="create_user", methods={"POST"})
+     */
+    public function create(Request $request): Response
+    {
+
+    }
+
+    /**
+     * @Route("/delete", name="user_delete", methods={"DELETE"})
+     */
+    public function delete()
+    {
 
 
 
-  }
+    }
 }
+
