@@ -16,6 +16,7 @@ class UserController extends ApiController
     public function lists(Request $request): Response
     {
         $number = "FDSFDSF";
+
         return new Response($number);
     }
 
