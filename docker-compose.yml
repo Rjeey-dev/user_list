@@ -30,5 +30,6 @@ services:
         volumes:
             - ./mongodb/data/db:/data/db
         ports:
-            - 27018:27018
-        command: mongod
+            - 27018:27017
+        command:
+            - mongod

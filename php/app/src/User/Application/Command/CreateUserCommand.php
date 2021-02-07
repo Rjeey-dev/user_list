@@ -9,19 +9,19 @@ use NinjaBuggs\ServiceBus\Command\CommandInterface;
 class CreateUserCommand implements CommandInterface
 {
     private $id;
-    private $username;
+    private $userName;
     private $text;
 
-    public function __construct(string $username, string $text)
+    public function __construct(string $userName, string $text)
     {
         $this->id = UserId::generate();
-        $this->username = $username;
+        $this->userName = $userName;
         $this->text = $text;
     }
 
-    public function getName(): string
+    public function getUserName(): string
     {
-        return $this->username;
+        return $this->userName;
     }
 
     public function getText(): string

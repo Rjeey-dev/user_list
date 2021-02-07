@@ -19,7 +19,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 class UserController extends ApiController
 {
     /**
-     * @Route("/lists", name="list", methods={"GET"})
+     * @Route("/users", name="users", methods={"GET"})
      */
     public function list(Request $request): Response
     {
@@ -44,7 +44,7 @@ class UserController extends ApiController
     }
 
     /**
-     * @Route ("/create_user", name="create_user", methods={"POST"})
+     * @Route ("/users", name="create_user", methods={"POST"})
      */
     public function create(Request $request): Response
     {

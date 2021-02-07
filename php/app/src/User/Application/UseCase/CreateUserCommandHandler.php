@@ -20,7 +20,7 @@ class CreateUserCommandHandler implements UseCaseInterface, TransactionalHandler
 
     public function __invoke(CreateUserCommand $command): void
     {
-        $user = new User($command->getId(), $command->getName(), $command->getText());
+        $user = new User($command->getId(), $command->getUserName(), $command->getText());
 
         $this->usersRepository->add($user);
     }

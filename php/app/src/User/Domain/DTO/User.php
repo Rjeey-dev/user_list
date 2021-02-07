@@ -18,7 +18,7 @@ class User
     public $id;
 
     /**
-     * @Serializer\SerializedName("name")
+     * @Serializer\SerializedName("username")
      * @Serializer\Type("string")
      * @Serializer\Groups({
      *     "users-list",

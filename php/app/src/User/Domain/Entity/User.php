@@ -49,7 +49,6 @@ class User implements EventRecordableInterface
             $id->getId(),
             $username,
             $text
-
         ));
     }
 

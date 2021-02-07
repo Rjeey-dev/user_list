@@ -52,5 +52,4 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
             \DateTimeImmutable::createFromMutable($user['created']->toDateTime()),
         );
     }
-
 }
