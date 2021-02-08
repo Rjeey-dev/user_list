@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\User\Application\Query;
 
@@ -26,7 +26,6 @@ class FindUsersQuery implements QueryInterface
     /**
      * @throws ValidationException
      */
-
     public function __construct(?int $offset, ?int $limit, ?string $order)
     {
         $offset = $offset ?? self::DEFAULT_OFFSET;
@@ -73,6 +72,10 @@ class FindUsersQuery implements QueryInterface
     private function validateLimit(int $limit): void
     {
         if ($limit < 0) {
+            throw new ValidationException('Limit should be positive');
+        }
+
+        if ($limit > self::MAX_LIMIT) {
             throw new ValidationException(sprintf('Limit should not be more than %s', self::MAX_LIMIT));
         }
     }

@@ -33,7 +33,10 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
 
         $query = $this->getDocumentManager()->createQueryBuilder(UserEntity::class);
         $query->skip($offset);
-        $query->sort('created', false)
+        $query->limit($limit);
+        $query->sort('created', $order);
+
+        $query = $query->hydrate(false)
             ->getQuery();
 
         foreach ($query->exclude() as $user){

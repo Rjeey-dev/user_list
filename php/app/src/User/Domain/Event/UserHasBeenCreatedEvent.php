@@ -23,7 +23,7 @@ class UserHasBeenCreatedEvent implements EventInterface
         return $this->id;
     }
 
-    public function getName(): string
+    public function getUserName(): string
     {
         return $this->username;
     }

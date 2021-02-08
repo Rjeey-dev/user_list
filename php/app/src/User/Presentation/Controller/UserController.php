@@ -32,7 +32,7 @@ class UserController extends ApiController
             ));
 
             return $this->buildSerializedListResponse(
-                $usersList->getTasks(),
+                $usersList->getUsers(),
                 $usersList->getTotalCount(),
                 ['users-list']
             );

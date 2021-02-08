@@ -27,7 +27,6 @@ class User
      */
     public $username;
 
-
     /**
      * @Serializer\SerializedName("text")
      * @Serializer\Type("string")

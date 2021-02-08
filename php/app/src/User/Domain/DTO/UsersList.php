@@ -20,7 +20,7 @@ class UsersList
     /**
      * @return User[]
      */
-    public function getTasks(): array
+    public function getUsers(): array
     {
         return $this->users;
     }

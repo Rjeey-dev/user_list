@@ -36,7 +36,6 @@ class UsersRepository extends DocumentRepository implements UsersRepositoryInter
     /**
      * {@inheritDoc}
      */
-
     public function remove(User $user): void
     {
         $this->getDocumentManager()->remove($user);
