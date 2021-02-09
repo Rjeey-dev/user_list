@@ -8,13 +8,13 @@ use NinjaBuggs\ServiceBus\Event\EventInterface;
 class UserHasBeenCreatedEvent implements EventInterface
 {
     private $id;
-    private $username;
+    private $userName;
     private $text;
 
-    public function __construct(string $id, string $username, string $text)
+    public function __construct(string $id, string $userName, string $text)
     {
         $this->id = $id;
-        $this->username = $username;
+        $this->userName = $userName;
         $this->text = $text;
     }
 
@@ -25,7 +25,7 @@ class UserHasBeenCreatedEvent implements EventInterface
 
     public function getUserName(): string
     {
-        return $this->username;
+        return $this->userName;
     }
 
     public function getText(): string

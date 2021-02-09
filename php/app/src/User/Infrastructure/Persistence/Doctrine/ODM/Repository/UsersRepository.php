@@ -27,7 +27,7 @@ class UsersRepository extends DocumentRepository implements UsersRepositoryInter
         $user = $this->getDocumentManager()->find(User::class, $id->getId());
 
         if (!$user) {
-            throw new UserNotFoundException(sprintf('Task with id - %s is not found', $id->getId()));
+            throw new UserNotFoundException(sprintf('User with id - %s is not found', $id->getId()));
         }
 
         return $user;

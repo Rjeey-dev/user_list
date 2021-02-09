@@ -26,7 +26,7 @@ class User implements EventRecordableInterface
     /**
      * @MongoDB\Field(type="string")
      */
-    private $username;
+    private $userName;
 
     /**
      * @MongoDB\Field(type="string")
@@ -38,28 +38,28 @@ class User implements EventRecordableInterface
      */
     private $created;
 
-    public function __construct(UserId $id, string $username, string $text)
+    public function __construct(UserId $id, string $userName, string $text)
     {
         $this->id = $id;
-        $this->username = $username;
+        $this->userName = $userName;
         $this->text = $text;
         $this->created = new \DateTimeImmutable();
 
         $this->recordEvent(new UserHasBeenCreatedEvent(
             $id->getId(),
-            $username,
+            $userName,
             $text
         ));
     }
 
-    public function update(string $text, string $username): void
+    public function update(string $text, string $userName): void
     {
-        $this->username = $username;
+        $this->userName = $userName;
         $this->text = $text;
 
         $this->recordEvent(new UserHasBeenUpdateEvent(
             $this->id->getId(),
-            $username,
+            $userName,
             $text
         ));
     }
@@ -68,7 +68,7 @@ class User implements EventRecordableInterface
     {
         $this->recordEvent(new UserHasBeenDeletedEvent(
             $this->id->getId(),
-            $this->username,
+            $this->userName,
             $this->text
         ));
     }

@@ -25,7 +25,7 @@ class User
      *     "user-detail",
      * })
      */
-    public $username;
+    public $userName;
 
     /**
      * @Serializer\SerializedName("text")
@@ -47,10 +47,10 @@ class User
      */
     public $created;
 
-    public function __construct(string $id, string $username, string $text, \DateTimeImmutable $created)
+    public function __construct(string $id, string $userName, string $text, \DateTimeImmutable $created)
     {
         $this->id = $id;
-        $this->username = $username;
+        $this->userName = $userName;
         $this->text = $text;
         $this->created = $created;
     }

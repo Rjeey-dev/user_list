@@ -21,7 +21,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
             ->getQuery();
 
         if (!$user = $query->getSingleResult()) {
-            throw new UserNotFoundException(sprintf('Task %s not found', $id->getId()));
+            throw new UserNotFoundException(sprintf('User %s not found', $id->getId()));
         }
 
         return $this->createUser($user);
