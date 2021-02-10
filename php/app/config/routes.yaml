@@ -1,2 +1,2 @@
-todos:
+users:
     resource: '../src/User/Presentation/Resources/config/routes/annotations.yaml'
