@@ -19,7 +19,7 @@ class User implements EventRecordableInterface
     use EventRecordableTrait;
 
     /**
-     * @MongoDB\Id(strategy="NONE", type="todo:user_id")
+     * @MongoDB\Id(strategy="NONE", type="user:user_id")
      */
     private $id;
 
