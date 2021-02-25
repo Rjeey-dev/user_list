@@ -15,6 +15,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
 {
     public function findUser(UserId $id): User
     {
+        var_dump(1);
         $query = $this->getDocumentManager()->createQueryBuilder(UserEntity::class)
             ->field('id')->equals($id->getId())
             ->hydrate(false)
@@ -39,7 +40,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
         $query = $query->hydrate(false)
             ->getQuery();
 
-        foreach ($query->exclude() as $user){
+        foreach ($query->execute() as $user){
             $usersResult[] = $this->createUser($user);
         }
 
@@ -50,7 +51,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
     {
         return new User(
             $user['_id'],
-            $user['name'],
+            $user['user_name'],
             $user['text'],
             \DateTimeImmutable::createFromMutable($user['created']->toDateTime()),
         );

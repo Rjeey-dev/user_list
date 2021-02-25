@@ -24,7 +24,7 @@ class User implements EventRecordableInterface
     private $id;
 
     /**
-     * @MongoDB\Field(type="string")
+     * @MongoDB\Field(name="user_name", type="string")
      */
     private $userName;
 

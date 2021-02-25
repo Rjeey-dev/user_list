@@ -36,10 +36,11 @@ class FindUsersQuery implements QueryInterface
         $this->validateLimit($limit);
         $this->validateOrder($order);
 
-        $this->order = $order;
+        $this->offset = $offset;
         $this->limit = $limit;
         $this->order = $order;
     }
+
 
     public function getOffset(): int
     {
@@ -48,7 +49,7 @@ class FindUsersQuery implements QueryInterface
 
     public function getLimit(): int
     {
-        return $this->order;
+        return $this->limit;
     }
 
     public function getOrder(): string

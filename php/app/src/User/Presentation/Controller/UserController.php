@@ -13,7 +13,7 @@ use App\User\Domain\Exception\ValidationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
 
 
 class UserController extends ApiController
@@ -26,9 +26,9 @@ class UserController extends ApiController
         try {
             /** @var UsersList $usersList */
             $usersList = $this->queryBus->handle(new FindUsersQuery(
-                $request->query->get('offset') ? (string)$request->query->get('offset') : null,
-                $request->query->get('limit') ? (string)$request->query->get('limit') : null,
-                $request->query->get('order') ? (string)$request->query->get('order') : null
+                $request->query->get('offset') !== null ? (int)$request->query->get('offset') : null,
+                $request->query->get('limit') !== null ? (int)$request->query->get('limit') : null,
+                $request->query->get('order') !== null ? (string)$request->query->get('order') : null
             ));
 
             return $this->buildSerializedListResponse(
@@ -59,7 +59,7 @@ class UserController extends ApiController
             $this->commandBus->handle($command);
 
             return $this->buildSerializedResponse(
-                $this->queryBus->handle(new FindUserByIdQuery($command->getId()->getId()))
+                $this->queryBus->handle(new FindUserByIdQuery($command->getId()->getId())),
                 ['user-detail']
             );
         } catch (ValidationException $e) {
