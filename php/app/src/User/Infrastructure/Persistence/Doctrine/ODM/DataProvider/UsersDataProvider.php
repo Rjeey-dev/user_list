@@ -15,7 +15,6 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
 {
     public function findUser(UserId $id): User
     {
-        var_dump(1);
         $query = $this->getDocumentManager()->createQueryBuilder(UserEntity::class)
             ->field('id')->equals($id->getId())
             ->hydrate(false)
@@ -41,6 +40,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
             ->getQuery();
 
         foreach ($query->execute() as $user){
+
             $usersResult[] = $this->createUser($user);
         }
 
