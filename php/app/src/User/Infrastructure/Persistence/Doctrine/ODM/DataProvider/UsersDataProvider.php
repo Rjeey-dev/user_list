@@ -15,7 +15,6 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
 {
     public function findUser(UserId $id): User
     {
-        var_dump(1);
         $query = $this->getDocumentManager()->createQueryBuilder(UserEntity::class)
             ->field('id')->equals($id->getId())
             ->hydrate(false)
