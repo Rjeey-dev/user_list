@@ -35,13 +35,12 @@ class FindUsersQuery implements QueryInterface
         $this->validateoffset($offset);
         $this->validateLimit($limit);
         $this->validateOrder($order);
-
+      
         $this->offset = $offset;
         $this->limit = $limit;
         $this->order = $order;
     }
-
-
+  
     public function getOffset(): int
     {
         return $this->offset;
