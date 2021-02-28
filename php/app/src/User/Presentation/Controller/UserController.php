@@ -16,8 +16,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-
 class UserController extends ApiController
 {
     /**
@@ -110,7 +108,4 @@ class UserController extends ApiController
             return $this->buildFailResponse($e->getMessage());
         }
     }
-
-
 }
-

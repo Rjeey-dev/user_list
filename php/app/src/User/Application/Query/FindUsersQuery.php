@@ -41,7 +41,6 @@ class FindUsersQuery implements QueryInterface
         $this->order = $order;
     }
 
-
     public function getOffset(): int
     {
         return $this->offset;
