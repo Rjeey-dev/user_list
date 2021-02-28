@@ -7,6 +7,7 @@ use App\Kernel\Api\Controller\ApiController;
 use App\Kernel\Api\Response\ApiResponse;
 use App\User\Application\Command\CreateUserCommand;
 use App\User\Application\Command\DeleteUserCommand;
+use App\User\Application\Command\UpdateUserCommand;
 use App\User\Application\Query\FindUserByIdQuery;
 use App\User\Application\Query\FindUsersQuery;
 use App\User\Domain\DTO\UsersList;
@@ -85,5 +86,31 @@ class UserController extends ApiController
             return $this->buildFailResponse($e->getMessage());
         }
     }
+
+    /**
+     * @Route("/users/{id}", name="user_update", methods={"PATCH"})
+     */
+
+    public function update(Request $request, string $id): Response
+    {
+        try {
+            $data = json_decode($request->getContent(), true);
+
+            $command = new UpdateUserCommand($id, (string) $data['text'], (string) $data['name']);
+
+            $this->commandBus->handle($command);
+
+            return $this->buildSerializedResponse(
+                $this->queryBus->handle(new FindUserByIdQuery($id)),
+                ['user-detail']
+            );
+        } catch (ValidationException $e) {
+            return $this->buildFailResponse(ApiResponse::ERROR_VALIDATION_FAILED);
+        } catch (\Throwable $e) {
+            return $this->buildFailResponse($e->getMessage());
+        }
+    }
+
+
 }
 

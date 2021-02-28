@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\User\Application\UseCase;
 
-use App\User\Application\Command\DeleteUserCommand;
+use App\User\Application\Command\UpdateUserCommand;
 use App\User\Domain\Repository\UsersRepositoryInterface;
 use NinjaBuggs\ServiceBus\Command\UseCaseInterface;
 use NinjaBuggs\ServiceBus\TransactionalHandlerInterface;
 
-class DeleteUserCommandHandler implements UseCaseInterface, TransactionalHandlerInterface
+class UpdateUserCommandHandler implements UseCaseInterface, TransactionalHandlerInterface
 {
     private $usersRepository;
 
@@ -17,12 +17,12 @@ class DeleteUserCommandHandler implements UseCaseInterface, TransactionalHandler
         $this->usersRepository = $usersRepository;
     }
 
-    public function __invoke(DeleteUserCommand $command): void
+    public function __invoke(UpdateUserCommand $command): void
     {
         $user = $this->usersRepository->get($command->getId());
 
-        $user->delete();
+        $user->update($command->getText(),$command->getUserName());
 
-        $this->usersRepository->remove($user);
+        $this->usersRepository->add($user);
     }
 }
