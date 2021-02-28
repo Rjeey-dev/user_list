@@ -39,7 +39,8 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
         $query = $query->hydrate(false)
             ->getQuery();
 
-        foreach ($query->exclude() as $user){
+        foreach ($query->execute() as $user){
+
             $usersResult[] = $this->createUser($user);
         }
 
@@ -50,7 +51,7 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
     {
         return new User(
             $user['_id'],
-            $user['name'],
+            $user['user_name'],
             $user['text'],
             \DateTimeImmutable::createFromMutable($user['created']->toDateTime()),
         );

@@ -10,7 +10,7 @@ services:
             - ./php/logs/:/var/www/log
         environment:
             PHP_IDE_CONFIG: serverName=todo
-            XDEBUG_CONFIG: "remote_host=192.168.100.2 remote_port=9004"
+            XDEBUG_CONFIG: "remote_host=192.168.100.4 remote_port=9004"
 
     nginx_service:
         build:
@@ -30,6 +30,6 @@ services:
         volumes:
             - ./mongodb/data/db:/data/db
         ports:
-            - 27018:27017
+            - 27017:27017
         command:
             - mongod
