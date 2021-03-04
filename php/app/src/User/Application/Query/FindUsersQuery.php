@@ -36,7 +36,6 @@ class FindUsersQuery implements QueryInterface
         $this->validateLimit($limit);
         $this->validateOrder($order);
 
-
         $this->offset = $offset;
         $this->limit = $limit;
         $this->order = $order;

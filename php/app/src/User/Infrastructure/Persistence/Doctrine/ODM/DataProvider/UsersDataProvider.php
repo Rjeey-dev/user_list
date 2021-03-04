@@ -40,7 +40,6 @@ class UsersDataProvider extends DocumentRepository implements UsersDataProviderI
             ->getQuery();
 
         foreach ($query->execute() as $user){
-
             $usersResult[] = $this->createUser($user);
         }
 
