@@ -26,6 +26,3 @@ class DeleteUserCommandHandler implements UseCaseInterface, TransactionalHandler
         $this->usersRepository->remove($user);
     }
 }
-
-
-
