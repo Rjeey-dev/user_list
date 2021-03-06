@@ -92,4 +92,3 @@ class UserController extends ApiController
         }
     }
 }
-
