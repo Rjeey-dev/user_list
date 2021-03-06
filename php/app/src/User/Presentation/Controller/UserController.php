@@ -7,6 +7,7 @@ use App\Kernel\Api\Controller\ApiController;
 use App\Kernel\Api\Response\ApiResponse;
 use App\User\Application\Command\CreateUserCommand;
 use App\User\Application\Command\UpdateUserCommand;
+use App\User\Application\Command\DeleteUserCommand;
 use App\User\Application\Query\FindUserByIdQuery;
 use App\User\Application\Query\FindUsersQuery;
 use App\User\Domain\DTO\UsersList;
@@ -68,6 +69,23 @@ class UserController extends ApiController
             return $this->buildFailResponse($e->getMessage());
         }
     }
+
+    /**
+     * @Route("/users/{id}", name="user_delete", methods={"DELETE"})
+     */
+    public function delete(string $id): Response
+    {
+        try {
+            $command = new DeleteUserCommand($id);
+
+            $this->commandBus->handle($command);
+
+            return $this->buildSuccessResponse();
+        } catch (\Throwable $e) {
+            return $this->buildFailResponse($e->getMessage());
+        }
+    }
+}
 
     /**
      * @Route("/users/{id}", name="user_update", methods={"PATCH"})
